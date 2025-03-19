@@ -22,11 +22,17 @@ class Offre extends Model
         'image',
         'user_id',
     ];
-    public function users(){
-        return $this->belongsTo(User::class);
+
+    public function candidats(){
+        return $this->belongsToMany(Candidat::class,'postulations');
     }
-    public function postulations(){
-        return $this->belongsToMany(User::class,'postulations');
+
+    public function recruteurs(){
+        return $this->belongsTo(Recruteur::class);
     }
+    
+
+
+
 
 }
