@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('postulations', function (Blueprint $table) {
+        Schema::create('user_competences', function (Blueprint $table) {
             $table->id();
-            $table->string('CV');
-            $table->foreignId('offre_id')->constrained()->onDelete('cascade');
+            $table->foreignId('candidat_id')->constrained()->onDelete('cascade');
+            $table->foreignId('competence_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('postulations');
+        Schema::dropIfExists('user_competences');
     }
 };

@@ -20,11 +20,9 @@ return new class extends Migration
             $table->decimal('salary', 10, 2)->nullable();
             $table->enum('employment_type', ['Full-time', 'Part-time', 'Contract', 'Freelance', 'Internship']);
             $table->enum('experience_level', ['Entry-level', 'Mid-level', 'Senior', 'Manager', 'Executive'])->nullable();
-            $table->json('required_skills')->nullable();
             $table->date('deadline')->nullable();
             $table->boolean('is_active')->default(true);
             $table->string('image')->nullable();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

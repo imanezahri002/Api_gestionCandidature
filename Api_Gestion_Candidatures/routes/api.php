@@ -29,10 +29,10 @@ Route::post('logout',[UserAuthController::class,'logout'])->middleware('auth:san
 Route::post('updateUser',[UserController::class,'update'])->middleware('auth:sanctum');
 Route::apiResource('offres',OffreController::class)->middleware('auth:sanctum');
 
-// Route::get('/offres',[OffreController::class,'index']);
-// Route::get('/offres/{offre:id}',[OffreController::class,'show']);
+Route::get('/offres',[OffreController::class,'index']);
+Route::get('/offres/{offre:id}',[OffreController::class,'show']);
 
-// Route::post('/offres',[OffreController::class,'store']);
+Route::post('/offres',[OffreController::class,'store']);
 
 Route::post('/postuler',[PostulationController::class,'store'])->middleware('auth:sanctum');
 Route::get('/', function () {
