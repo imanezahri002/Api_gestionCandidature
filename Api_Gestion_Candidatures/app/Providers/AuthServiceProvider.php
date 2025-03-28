@@ -5,6 +5,7 @@ namespace App\Providers;
 // use Illuminate\Support\Facades\Gate;
 
 use App\Models\Competence;
+use App\Models\Offre;
 use App\Policies\CompetencePolicy;
 use App\Policies\OffrePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
