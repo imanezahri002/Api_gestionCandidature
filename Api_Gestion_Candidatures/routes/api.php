@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompetenceController;
 use App\Http\Controllers\OffreController;
 use App\Http\Controllers\PostulationController;
 use App\Http\Controllers\UserAuthController;
@@ -20,21 +21,28 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+})->middleware('auth:api');
 
 Route::post('register',[UserAuthController::class,'register']);
 Route::post('login',[UserAuthController::class,'login']);
-Route::post('logout',[UserAuthController::class,'logout'])->middleware('auth:sanctum');
+Route::post('refresh',[UserAuthController::class,'refresh']);
+Route::post('logout',[UserAuthController::class,'logout'])->middleware('auth:api');
 
-Route::post('updateUser',[UserController::class,'update'])->middleware('auth:sanctum');
-Route::apiResource('offres',OffreController::class)->middleware('auth:sanctum');
 
-Route::get('/offres',[OffreController::class,'index']);
-Route::get('/offres/{offre:id}',[OffreController::class,'show']);
+Route::post('updateUser',[UserController::class,'update'])->middleware('auth:api');
+Route::apiResource('offres',OffreController::class)->middleware('auth:api');
 
-Route::post('/offres',[OffreController::class,'store']);
+Route::get('/competence',[CompetenceController::class,'index'])->middleware('auth:api');
+Route::post('/competence',[CompetenceController::class,'store'])->middleware('auth:api');
+Route::post('/competence/{competence:id}',[CompetenceController::class,'destroy'])->middleware('auth:api');
 
-Route::post('/postuler',[PostulationController::class,'store'])->middleware('auth:sanctum');
+// Route::get('/offres',[OffreController::class,'index']);
+// Route::get('/offres/{offre:id}',[OffreController::class,'show']);
+
+// Route::post('/offres',[OffreController::class,'store']);
+
+Route::post('/postuler',[PostulationController::class,'store'])->middleware('auth:api');
+
 Route::get('/', function () {
         return view('welcome');
-    })->middleware('auth:sanctum');
+    });

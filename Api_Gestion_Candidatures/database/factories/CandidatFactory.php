@@ -17,7 +17,10 @@ class CandidatFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'phone' => $this->faker->phoneNumber(),
+            'adresse' => $this->faker->address(),
+            'bio' => $this->faker->text(),
+            'user_id' => 1,
         ];
     }
 }

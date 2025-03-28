@@ -24,11 +24,10 @@ class OffreFactory extends Factory
             'salary' => $this->faker->randomFloat(2, 20000, 150000),
             'employment_type' => $this->faker->randomElement(['Full-time', 'Part-time', 'Contract', 'Freelance', 'Internship']),
             'experience_level' => $this->faker->randomElement(['Entry-level', 'Mid-level', 'Senior', 'Manager', 'Executive']),
-            'required_skills' => json_encode($this->faker->randomElements(['PHP', 'JavaScript', 'React', 'Vue', 'Laravel', 'MySQL', 'Python', 'AWS'], $this->faker->numberBetween(2, 5))),
             'deadline' => $this->faker->dateTimeBetween('+1 week', '+3 months')->format('Y-m-d'),
             'is_active' => $this->faker->boolean(80),
             'image' => $this->faker->imageUrl(),
-            'user_id' => \App\Models\User::factory(),
+            'recruteur_id' => \App\Models\Recruteur::inRandomOrder()->first()->id,
         ];
     }
 }

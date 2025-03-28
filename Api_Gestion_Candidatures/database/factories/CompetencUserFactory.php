@@ -2,12 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Candidat;
+use App\Models\Competence;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Competence>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class CompetenceFactory extends Factory
+class CompetencUserFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +19,8 @@ class CompetenceFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word(),
+            'candidat_id' => Candidat::factory(),
+            'competence_id' => Competence::factory(),
         ];
     }
 }

@@ -37,11 +37,15 @@ class OffreController extends Controller
             'deadline'=>'required',
             'is_active'=>'required',
             'image'=>'required',
-            'user_id' => 'required',
+            'recruteur_id' => 'required',
 
         ]);
         Offre::create($validated);
-        return 'offre ajoutée avec succes';
+        return response()->json([
+            'success' => true,
+            'data' => $validated,
+            'message'=>'Offre created successfully'
+        ],200);
     }
 
     /**
@@ -57,6 +61,7 @@ class OffreController extends Controller
      */
     public function update(Request $request, Offre $offre)
     {
+        $this->authorize('update', $offre);
         $validated=$request->validate([
             'title'=>'required',
             'description'=>'required',
@@ -69,11 +74,16 @@ class OffreController extends Controller
             'deadline'=>'required',
             'is_active'=>'required',
             'image'=>'required',
-            'user_id' => 'required',
+            'recruteur_id' => 'required',
 
 
         ]);
         $offre->update($validated);
+        return response()->json([
+            'success' => true,
+            'data' => $validated,
+            'message'=>'Offre updated successfully'
+        ],200);
     }
 
     /**
@@ -81,6 +91,11 @@ class OffreController extends Controller
      */
     public function destroy(Offre $offre)
     {
+        $this->authorize('delete',$offre);
         $offre->delete();
+        return response()->json([
+            'success' => true,
+            'message'=>'Offre deleted successfully'
+        ],200);
     }
 }

@@ -20,7 +20,7 @@ class Offre extends Model
         'deadline',
         'is_active',
         'image',
-        'user_id',
+        'recruteur_id',
     ];
 
     public function candidats(){
@@ -30,7 +30,7 @@ class Offre extends Model
     public function recruteurs(){
         return $this->belongsTo(Recruteur::class);
     }
-    
+
 
 
 

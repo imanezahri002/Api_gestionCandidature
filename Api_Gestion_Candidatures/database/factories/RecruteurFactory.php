@@ -17,7 +17,9 @@ class RecruteurFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'company_name' => $this->faker->company(),
+            'description' => $this->faker->paragraph(),
+            'user_id'=>\App\Models\User::factory(),
         ];
     }
 }

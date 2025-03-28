@@ -8,36 +8,16 @@ use Illuminate\Auth\Access\Response;
 
 class OffrePolicy
 {
-    /**
-     * Determine whether the user can view any models.
-     */
-    public function viewAny(User $user): bool
-    {
-        //
-    }
 
-    /**
-     * Determine whether the user can view the model.
-     */
-    public function view(User $user, Offre $offre): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can create models.
-     */
-    public function create(User $user): bool
-    {
-        //
-    }
 
     /**
      * Determine whether the user can update the model.
      */
     public function update(User $user, Offre $offre): bool
     {
-        //
+        return $user->recruteurs->id == $offre->recruteur_id;
+
+
     }
 
     /**
@@ -45,22 +25,8 @@ class OffrePolicy
      */
     public function delete(User $user, Offre $offre): bool
     {
-        //
+        return $user->recruteurs->id == $offre->recruteur_id;
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Offre $offre): bool
-    {
-        //
-    }
 
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Offre $offre): bool
-    {
-        //
-    }
 }
